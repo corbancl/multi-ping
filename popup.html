@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多地 Ping 检测</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="12" cy="12" r="2" fill="currentColor"/>
+    </svg>
+  </div>
+  <div class="header-info">
+    <div class="app-name">多地 Ping 检测</div>
+    <div class="app-desc">全球节点延迟监测</div>
+  </div>
+  <span class="version-tag">v2.2</span>
+</div>
+
+<!-- Page Info -->
+<div class="page-info">
+  <div class="page-info-row">
+    <span class="page-info-label">当前页面</span>
+    <span id="page-url">加载中...</span>
+  </div>
+</div>
+
+<!-- View: Idle -->
+<div id="view-idle">
+  <div class="scan-hero">
+    <div class="scan-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+        <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h2>检测网站访问延迟</h2>
+    <p>一键获取全国多个城市的访问响应时间</p>
+  </div>
+
+  <div class="nodes-preview">
+    <div class="nodes-title">支持全国 <strong>120+</strong> 节点</div>
+    <div class="nodes-grid">
+      <span class="node-tag">🇨🇳 北京</span>
+      <span class="node-tag">🇨🇳 上海</span>
+      <span class="node-tag">🇨🇳 广州</span>
+      <span class="node-tag">🇨🇳 深圳</span>
+      <span class="node-tag">🇨🇳 杭州</span>
+      <span class="node-tag">🇨🇳 成都</span>
+      <span class="node-tag">🇨🇳 武汉</span>
+      <span class="node-tag">🇨🇳 西安</span>
+    </div>
+  </div>
+
+  <button class="btn-primary" id="btn-scan">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+      <polyline points="22 4 12 14.01 9 11.01"/>
+    </svg>
+    开始检测
+  </button>
+</div>
+
+<!-- View: Scanning -->
+<div id="view-scanning" class="hidden">
+  <div class="scanning-view">
+    <div class="scan-anim">
+      <div class="ping-ring"></div>
+      <div class="ping-ring"></div>
+      <div class="ping-ring"></div>
+      <div class="ping-center"></div>
+    </div>
+    <div id="scan-status">正在初始化...</div>
+    <div class="progress-wrap">
+      <div id="progress-bar-fill" style="width:0%"></div>
+    </div>
+    <div id="progress-text">0 / 0</div>
+  </div>
+</div>
+
+<!-- View: Result -->
+<div id="view-result" class="hidden">
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num primary" id="stat-avg">-</div>
+      <div class="stat-label">平均延迟</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num success" id="stat-fast">-</div>
+      <div class="stat-label">最快</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num danger" id="stat-slow">-</div>
+      <div class="stat-label">最慢</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" id="stat-success">-</div>
+      <div class="stat-label">成功率</div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-section">
+    <div class="chart-title">延迟分布</div>
+    <div class="chart-container" id="chart-container">
+      <!-- Bar chart will be rendered here -->
+    </div>
+  </div>
+
+  <!-- Results List -->
+  <div class="results-section">
+    <div class="results-header">
+      <span>详细结果</span>
+      <span id="result-count">-</span>
+    </div>
+    <div class="results-list" id="results-list">
+      <!-- Results will be rendered here -->
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="result-toolbar">
+    <button class="btn-secondary" id="btn-rescan">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M23 4v6h-6M1 20v-6h6"/>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+      </svg>
+      重新检测
+    </button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script src="popup.js"></script>
+</body>
+</html>

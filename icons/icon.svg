@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d0d1f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d2ff"/>
+      <stop offset="100%" style="stop-color:#3a7bd5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad)"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="url(#accentGrad)" stroke-width="8" opacity="0.3"/>
+
+  <!-- Middle ring with dash -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="url(#accentGrad)" stroke-width="6" stroke-dasharray="20 10" opacity="0.5" filter="url(#glow)"/>
+
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="100" fill="none" stroke="url(#accentGrad)" stroke-width="4" opacity="0.7"/>
+
+  <!-- Signal waves -->
+  <circle cx="256" cy="256" r="60" fill="none" stroke="#00d2ff" stroke-width="3" opacity="0.8" filter="url(#glow)">
+    <animate attributeName="r" values="50;70;50" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <circle cx="256" cy="256" r="30" fill="none" stroke="#00d2ff" stroke-width="4" opacity="0.9" filter="url(#glow)">
+    <animate attributeName="r" values="20;40;20" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+
+  <!-- Center dot -->
+  <circle cx="256" cy="256" r="20" fill="url(#accentGrad)" filter="url(#glow)"/>
+
+  <!-- Location markers -->
+  <circle cx="256" cy="100" r="8" fill="#43e97b"/>
+  <circle cx="380" cy="180" r="8" fill="#43e97b"/>
+  <circle cx="420" cy="300" r="8" fill="#f9c74f"/>
+  <circle cx="380" cy="400" r="8" fill="#ff5f6d"/>
+  <circle cx="256" cy="440" r="8" fill="#f9c74f"/>
+  <circle cx="132" cy="400" r="8" fill="#43e97b"/>
+  <circle cx="92" cy="300" r="8" fill="#43e97b"/>
+  <circle cx="132" cy="180" r="8" fill="#f9c74f"/>
+
+  <!-- Connection lines -->
+  <line x1="256" y1="100" x2="256" y2="236" stroke="#43e97b" stroke-width="2" opacity="0.3"/>
+  <line x1="380" y1="180" x2="276" y2="236" stroke="#43e97b" stroke-width="2" opacity="0.3"/>
+  <line x1="420" y1="300" x2="276" y2="276" stroke="#f9c74f" stroke-width="2" opacity="0.3"/>
+  <line x1="380" y1="400" x2="276" y2="276" stroke="#ff5f6d" stroke-width="2" opacity="0.3"/>
+  <line x1="256" y1="440" x2="256" y2="276" stroke="#f9c74f" stroke-width="2" opacity="0.3"/>
+  <line x1="132" y1="400" x2="236" y2="276" stroke="#43e97b" stroke-width="2" opacity="0.3"/>
+  <line x1="92" y1="300" x2="236" y2="276" stroke="#43e97b" stroke-width="2" opacity="0.3"/>
+  <line x1="132" y1="180" x2="236" y2="236" stroke="#f9c74f" stroke-width="2" opacity="0.3"/>
+</svg>
